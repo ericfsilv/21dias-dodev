@@ -1,3 +1,11 @@
+//IF e Else 
+let idade = Number(prompt = "insira sua idade = ")
+
+if(idade >= 10) {
+    console.log("Você não é criança")
+} else{
+    console.log("Você é criança")
+}
 //Criando variaveis
 let fome = false
 let dinheiro = false

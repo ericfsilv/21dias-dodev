@@ -1,36 +1,53 @@
-//Criando Variaveis
-let nome = prompt("Digite seu nome")
-let cpf = prompt("Digite seu cpf")
-let operacao
-let valor = 0
-let saldo = 100
-let maiorValor = 0
-let mediaValores = 0
-let contador = 0
-let continuar = 1
+//Do While - Caixa Eletronico - DoDEV
+//variaveis 
+let saldo = 1000;
+let maiorValorInserido = 0;
+let somaValoresInseridos = 0;
+let totalTransacoes = 0;
+let continuar = false;
 
-//Criando o loop DoWhile
 do {
-    operacao = prompt("Insira a operação desejada (s/d)")
-    valor = parseFloat(prompt("Digite o valor desejado"))
-    mediaValores += valor
+    const nome = prompt("Digite seu nome: ");
+    const cpf = prompt("Informe seu cpf: ");
+    const valor = Number(prompt("Informe o valor da transação:  "));
+    const operacao = prompt("Qual operação deseja? S/D");
 
-    if (valor > maiorValor) {
-        maiorValor = valor
-    }
-
-    if (operacao == "s" && valor <= saldo) {
-        saldo -= valor
-    } else if (operacao == "s" && valor > saldo) {
-        console.log("O valor inserido deve ser menor do que o saldo")
+    if(valor < 0) {
+        console.log("Valor inválido")
+    } else if(operacao == "S" && valor > saldo) {
+        console.log("Saldo insuficiente. A Transação não foi realizada!")
+    } else if(operacao == "S") {
+        console.log(`Olá, ${nome} (${cpf}), seu saldo atual é R$${saldo}.`);
+        saldo -= valor;
+        totalTransacoes++;
+        somaValoresInseridos += valor;
+        if(valor > maiorValorInserido) {
+            maiorValorInserido = valor;
+        }
+        console.log(`Transação realizada com sucesso. Seu saldo atual é de R$${saldo}. `)
     } else {
-        saldo += valor
+        console.log(`Olá, ${nome} (${cpf}, seu saldo é R$${saldo}.)`);
+        saldo += valor;
+        totalTransacoes++;
+        somaValoresInseridos += valor;
+        if(valor > maiorValorInserido) {
+            maiorValorInserido = valor;
+        }
+        console.log(`Transação realizada com sucesso. Seu saldo atual é de R$${saldo}. `)
     }
 
-    contador++
-    console.log("Seu saldo é de: " + saldo)
-    console.log("O maior valor inserido foi: " + maiorValor)
-    console.log("A media dos valores foi: " + (mediaValores / contador))
+    const opcao = prompt("Deseja continuar? (1- continuar e 2- parar")
+    if(opcao === "1") {
+        continuar = true;
+    } else if(opcao === "2") {
+        continuar = false;
+    } else {
+        console.log("Opção inválida")
+        continuar = false;
+    }
 
-    continuar = parseInt(prompt("Voce deseja continuar? 1 - sim, 2 - não"))
-} while (continuar == 1)
+} while (continuar)
+
+console.log(`Saldo final R$${saldo}`);
+console.log(`Maior valor inserido: R$${maiorValorInserido}`);
+console.log(`Media dos valores inseridos: R$${somaValoresInseridos / totalTransacoes}`)

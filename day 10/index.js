@@ -1,19 +1,39 @@
-let array = [];
-let indicesEncontrado = [];
+// day 10 ARRAY_LENGTH
+const array = [];
+const indice = [];
+let contadorIndice = 0;
+
+const numeroProcurado = parseInt(prompt("Digite o número a ser procurado: "));
 
 for (let i = 0; i < 10; i++) {
-    let numero = parseInt("Digite o " + (i + 1) + " número")
+    const elemento = parseInt(prompt(`Digite o elemento: ${i + 1}`));
+    array[i] = elemento;
+}
+
+for (let i = 0; i < 10; i++) {
+    if(array[i] === numeroProcurado) {
+        indice[contadorIndice] = i
+        contadorIndice++
+    }
+}
+
+console.log(`O numero ${numeroProcurado} foi encontrado nos indices: ${indice}`);
+////////////////////////////////////////////////////////////////////////////////////////////
+// EXERCICIO 2 
+const arrays = [];
+const arrayInvertido = []; 
+ 
+for (let i = 0; i < 5; i++) {
+    let numero = parseInt(prompt("Digite o " + (i + 1) + " numero"))
     array[i] = numero
 }
 
-let numeroProcurado = parseInt(prompt("Digite o numero que deseja procurar no array"))
-let contador = 0
+console.log("Array original: " + array)
 
-for (let i = 0; i < array.length; i++) {
-    if (array[i] == numeroProcurado) {
-        indicesEncontrado[contador] = i
-        contador++
-    } 
+let contador = 4
+for(let i = 0; i < 5; i++) {
+    arrayInvertido[i] = array[contador]
+    contador--
 }
 
-console.log("O numero inserido aparece nos indices " + indicesEncontrado)
+console.log("Array invertido" + arrayInvertido)

@@ -102,7 +102,7 @@ function ProcurarReservaPeloNome(nome) {
             console.log("Hotel: " + hoteis[(reservas[i].IdHotel) - 1].Nome)
         }
     }
-}
+} 
 
 function ProcurarHotelPelaCategoria(categoria) {
     let hoteisProcurados = []
@@ -118,4 +118,43 @@ function AtualizarTelefone(idHotel, telefone) {
     hoteis[idHotel - 1].Telefone = telefone
     console.log("Número de telefone atualizado!")
 }
+
+let continuar = true
+do {
+    let opcao = prompt("Escolha uma opção: \n1- Cadastrar Hotel \n2- Cadastrar Reserva \n3- Procurar reserva por hotel" + "\n4- Procurar hotel pela reserva \n5- Procuarar reserva pelo responsavel \n6- Procurar hotel por categoria" + "\n7- Atualizar telefone de um hotel \n8- Encerrar programa")
+
+    switch (opcao) {
+        case "1":
+            CadastrarHotel();
+            break;
+        case "2":
+            CadastrarReserva();
+            break;
+        case "3":
+            ProcurarReservasPeloHotel(prompt("Digite o Id do hotel"));
+            break;
+        case "4":
+            ProcurarHotelPelaReserva(prompt("Digite o Id da reserva"));
+            break;
+        case "5":
+            ProcurarReservaPeloNome(prompt("Digite o nome do responsavel pela reserva"));
+            break;
+        case "6": 
+            let hoteisProcurados = ProcurarHotelPelaCategoria(parseInt(prompt("Digite a categoria que deseja procurar")))
+            console.log(hoteisProcurados)
+            break;
+        case "7": 
+            let idHotel = parseInt(prompt("Digite o id do hotel que deseja atualizar"))
+            let telefone = prompt("Digite o novo telefone")
+            AtualizarTelefone(idHotel, telefone)
+            break;
+        case "8": 
+            console.log("Programa Encerrado!")
+            continuar = false
+            break;
+        default:
+            console.log("Opção Invalida!")
+            break;        
+    }
+} while (continuar)
 
